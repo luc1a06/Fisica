@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Calculadora de movimiento</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+  <title>Calculadora de movimiento</title>    
 </head>
 <body>
-	<nav class="navbar navbar-light" style="background-color: #E9E2AF;">
+<nav class="navbar navbar-light" style="background-color: #E9E2AF;">
   <!-- Navbar content -->
 </nav>
+
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Calculadora de Fisica</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <h1 class="display-4">Calculadora de Movimiento</h1>
+    <p class="lead">Los elementos que se consideran necesarios para facilitar el aprendizaje de conceptos y la aplicación de modelos matemáticos en el campo de la Física, son algunos conceptos de las matemáticas como: </p>
+    <p><li>sistemas de unidades, <li>magnitudes escalares, <li>magnitudes vectoriales, <li>notación científica, <li>análisis dimensional.</p>
+
 <form id="formulario">
 	<label for="distancia">Distancia:</label>
 	<input type="text"  id="distancia" name="distancia">
@@ -39,73 +46,84 @@
 	</select>
 	<br>
 	<br>
-	<button type="button" class="btn btn-warning" value="Calcular" onclick="Calcular()">Calcular</button>
+
+	<button type="button" class="btn btn-success" value="Calcular" onclick="Calcular()">Calcular</button>
+
 </form>
 <br>
+
 <p id="resultado"></p>
 
 <p style="color: #3d3ded; background-color: #ee8ce6"> Velocidad: <span id="velocidad"></span></p>
 <p style="color: #3d3ded; background-color: #ee8ce6"> Aceleracion: <span id="aceleracion"></span></p>
 <p style="color: #3d3ded; background-color: #ee8ce6"> Rapidez: <span id="rapidez"></span></p>
 
-<script type="text/javascript">
-	function Calcular(){
-		const distancia = parsefloat(document.getElementById('distancia').value);
-		const tiempo = parsefloat(document.getElementById('tiempo').value);
+<script>
+ 
+ function Calcular(){
+    const distancia = parseFloat(document.getElementById('distancia').value);
+    const tiempo = parseFloat(document.getElementById('tiempo').value);
 
-		//estas 3 variables son para poner las unidades metricas
-		
-		const distanciaUnidad = document.getElementById('distanciaUnidad').value;
-		const tiempoUnidad = document.getElementById('tiempoUnidad').value;
-		const velocidadUnidad = document.getElementById('velocidadUnidad').value;
+    //estas 3 variables son para poner las unidades metricas
+        const distanciaUnidad = document.getElementById('distanciaUnidad').value;
+        const tiempoUnidad = document.getElementById('tiempoUnidad').value;
+        const velocidadUnidad = document.getElementById('velocidadUnidad').value;
 
-		//convertir estas unidades a Sistema Metrico Internacional (SI)
-		let distanciaSI = 0;
-		let tiempoSI = 0;
+        //Convertir unidades a Sistema Metrico Internacional (SI)
+        let distanciaSI = 0; //<--modifico esta linea
+        let tiempoSI = 0; //<--modifico esta linea
 
-		//dependiendo las unidades que seleccionaron, uso este IF
-		if(distanciaUnidad === 'metros'){
-			distanciaSI = distancia;
-		} else if(distanciaUnidad === 'pies'){
-			distanciaSI === distancia/3.281;
-		}
-		if(tiempoUnidad === 'segundos'){
-			tiempoSI === tiempo;
-		}else if(tiempoUnidad === 'horas'){
-			tiempoSI = tiempo*3600;
-		}
+        //Dependiendo las unidades que seleccionaron, uso este IF
+        if(distanciaUnidad === 'metros'){
+          distanciaSI = distancia;
+        } else if(distanciaUnidad === 'pies'){
+          distanciaSI = distancia /3.281; //son 3 pies por cada metro, por eso la division de 3.281, para mas informacion, checar sus apuntes de fisica.
+        }
+        if (tiempoUnidad === 'segundos') {
+          tiempoSI = tiempo;
+        } else if(tiempoUnidad === 'horas'){
+          tiempoSI = tiempo * 3600; //lo mismo que arriba, multiplico por 3600 para la cantidad de segundos en un minuto (60) por los 60 minutos en una hora (60) = 60 * 60=3600
+        }
 
-		let velocidad = 0;
-		let aceleracion = 0;
-		let rapidez = 0;
+        console.log("El valor de la distancia " +distancia);
+        console.log("El valor del tiempo " +tiempo);
 
-		if(velocidadUnidad==='metros_por_segundo'){
-			velocidad = distanciaSI/tiempoSI;
-			rapidez = velocidad;
-			aceleracion = velocidad/tiempoSI;
-		}
-		else if (velocidadUnidad === 'pies_por_segundo'){
-			velocidad = (distanciaSI*3.281) / tiempoSI;
-			aceleracion = velocidad /tiempoSI;
-		}
-		else if(velocidadUnidad === 'kilometros_por_hora'){
-			velocidad = (distanciaSI / 1000) / (tiempoSI/3600);
-			rapidez = velocidad;
-			aceleracion = velocidad / (tiempoSI/3600);
-		}
-		else if(velocidadUnidad === 'millas_por_hora'){
-			velocidad = (distanciaSI / 1609) (tiempoSI/3600);
-			rapidez = velocidad;
-			aceleracion = velocidad / (tiempoSI/3600);
-		}
-		//mostrar resultados
-		let resultado = '';
 
-		document.getElementById('velocidad').textContent = velocidad.toFixed(2) + '' +velocidadUnidad:
-		document.getElementById('aceleracion').textContent = aceleracion.toFixed(2) + '' + 
+        //Con el siguiente codigo, voy a calcular la velocidad, aceleracion y la rapidez (aunque no hay formula, por lo pronto para ella, solo dire que es igual a la velociad)
+        
+        let velocidad = 0;
+        let aceleracion = 0;
+        let rapidez = 0;
+        
+        if(velocidadUnidad === 'metros_por_segundo'){
+          velocidad = distanciaSI / tiempoSI;
+          rapidez = velocidad;
+          aceleracion = velocidad / tiempoSI;
+        }
+        else if(velocidadUnidad === 'pies_por_segundo'){
+          velocidad = (distanciaSI * 3.281) / tiempoSI;
+          rapidez = velocidad;
+          aceleracion = velocidad / tiempoSI;
+        }
+        else if(velocidadUnidad === 'kilometros_por_hora'){
+          velocidad = (distanciaSI / 1000) / (tiempoSI / 3600);
+          rapidez = velocidad;
+          aceleracion = velocidad / (tiempoSI / 3600);
+        }
+        else if(velocidadUnidad === 'millas_por_hora'){
+          velocidad = (distanciaSI / 1609) / (tiempoSI / 3600);
+          rapidez = velocidad;
+          aceleracion = velocidad / (tiempoSI / 3600);
+        }
+    //mostrar los resultados
+        let resultado = '';
 
-	}
-	
+        document.getElementById('velocidad').textContent = velocidad.toFixed(2) + ' ' + velocidadUnidad; // el 2, son la cantidad despues del punto decimal cuando se haga la division, lo que dice velocidadUnidad, solo son las unidades que hice en el form, arriba.
+        document.getElementById('aceleracion').textContent = aceleracion.toFixed(2) + 'm/s^2';
+        document.getElementById('rapidez').textContent = rapidez.toFixed(2) + ' ' + velocidadUnidad;
+
+        document.getElementById('resultado').innerHTML =resultado; //mas o menos esta linea le dice que acepte comandos de HTML en el javascript y acepte lo del resultado y lo mande para despues del script.
+  }
 </script>
   
   </div>

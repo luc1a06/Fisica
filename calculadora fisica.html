@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE_edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-  <title>Calculadora de movimiento</title>    
+    <title> Pagina 1 </title>
 </head>
 <body>
-<nav class="navbar navbar-light" style="background-color: #E9E2AF;">
-  <!-- Navbar content -->
-</nav>
+	<div style="margin: 24px;">
+      <nav class="navbar navbar-light" style="background-color: #7D4E57;">
+      	<div class="container">
+      		<a class="navbar-brand" href="index.html">Inicio</a>
+      		<ul class="nav navbar-nav">
+                <li class="active">
+                	<a href="menu.html">Menu</a>
+                </li>
+                <li>    
+                	<a href="formulario.html">Formulario</a>
+                </li>
+                <li>
+                	<a href="resultado.html">Resultado</a>
+                </li>
+                <li>
+                	<a href="contacto.html">Contacto</a>
+                </li>
+      		</ul>
+      	</div>
+      </nav>
+	</div>
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
@@ -25,31 +46,31 @@
     <p><li>sistemas de unidades, <li>magnitudes escalares, <li>magnitudes vectoriales, <li>notación científica, <li>análisis dimensional.</p>
 
 <form id="formulario">
-	<label for="distancia">Distancia:</label>
-	<input type="text"  id="distancia" name="distancia">
-	<select id="distanciaUnidad">
-		<option value="metros">metros</option>
-		<option value="pies">pies</option>
-	</select>
-	<br>
-	<label for="tiempo">Tiempo</label>
-	<input type="text" id="tiempo" name="tiempo">
-	<select id="tiempoUnidad">
-		<option value="segundos">segundos</option>
-		<option value="horas">horas</option>
-	</select>
-	<br>
-	<label for="velocidadUnidad">Unidades de velocidad</label>
-	<select id="velocidadUnidad">
-		<option value="metros_por_segundo">m/s</option>
-		<option value="pies_por_segundo">ft/s</option>
-		<option value="kilometros_por_hora">km/hr</option>
-		<option value="millas_por_hora">mph</option>
-	</select>
-	<br>
-	<br>
+  <label for="distancia">Distancia:</label>
+  <input type="text"  id="distancia" name="distancia">
+  <select id="distanciaUnidad">
+    <option value="metros">metros</option>
+    <option value="pies">pies</option>
+  </select>
+  <br>
+  <label for="tiempo">Tiempo</label>
+  <input type="text" id="tiempo" name="tiempo">
+  <select id="tiempoUnidad">
+    <option value="segundos">segundos</option>
+    <option value="horas">horas</option>
+  </select>
+  <br>
+  <label for="velocidadUnidad">Unidades de velocidad</label>
+  <select id="velocidadUnidad">
+    <option value="metros_por_segundo">m/s</option>
+    <option value="pies_por_segundo">ft/s</option>
+    <option value="kilometros_por_hora">km/hr</option>
+    <option value="millas_por_hora">mph</option>
+  </select>
+  <br>
+  <br>
 
-	<button type="button" class="btn btn-success" value="Calcular" onclick="Calcular()">Calcular</button>
+  <button type="button" class="btn btn-success" value="Calcular" onclick="Calcular()">Calcular</button>
 
 </form>
 <br>
